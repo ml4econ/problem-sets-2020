@@ -161,5 +161,5 @@ If you want to clone a repo you just need to use the `git clone <url>`. For exam
 2. As mentioned, `GitHub` is a GUI for Git. Try to do the same steps that we did here in GitHub.  
 
 
-Good luck! 
+Good luck!
 
