@@ -19,7 +19,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Hi everyone and welcome to the ml4econ course (stands for Machine Learning for economists)!  
 
-### Theoretical Preface  
+### About the Course
 In this course we will go over ML (stands for "machine learning") algorithms that can be used in economics. The first part of the course will focus on some classic models in ML (you are probably familiar with some of them). The second part of the course will focus on causality in ML. Since economics is mostly focused on causality the absence of it from classic ML framework avoids the vast adoption of it by economists. Therefore we will go over some classic ML algorithms and then we will look at some adaptions of them to causal inference framework. 
 
 #### Exercises  
@@ -29,38 +29,40 @@ In this course we will go over ML (stands for "machine learning") algorithms tha
 
 + What is the intuitive meaning of the linearity assumption?  
 
-+ What is the intuitive meaning of the seperability assumption?  
++ What is the intuitive meaning of the separability assumption?  
 
 + What are the encapsulated meanings in $X \sim \mathcal{N}(\mu,\,\sigma^{2})\,$?
 
-###R
-Throughout the course we will be using the `R` language both in class and in problem sets. If you are not familiar with it or if you don't have enough experience in programming with `R` than you should probably start in some basic `R` courses. You will find many of them online. You can find some material in the following links:  
+### R
+Throughout the course we will be using the `R` programming language both in class and in problem sets. If you are not familiar with it or if you don't have enough experience in programming with `R` than you should probably start in some basic `R` courses. You will find many of them online. You can find some material in the following links:  
 
-1. You can find Some introduction[in here](https://www.guru99.com/r-programming-introduction-basics.html).
+1. You can find some introduction[in here](https://www.guru99.com/r-programming-introduction-basics.html).
 2. This is a somewhat [Extensive book](http://www.john-ros.com/Rcourse/) on `R` written by Jonathan Rosenblatt from Ben-Gurion University. It covers many topics in `R`, from basics like what is `R` to very advanced topics like parallel computing. 
 3. Make sure that you take the [datacamp course](https://www.datacamp.com/courses/introduction-to-the-tidyverse?utm_source=adwords_ppc&utm_campaignid=9039963993&utm_adgroupid=92159846780&utm_device=c&utm_keyword=r%20basics&utm_matchtype=e&utm_network=g&utm_adpostion=&utm_creative=255795296110&utm_targetid=aud-299261629654:kwd-310539422068&utm_loc_interest_ms=&utm_loc_physical_ms=1007978&gclid=Cj0KCQiAnL7yBRD3ARIsAJp_oLaMDa2jnueQTJ-37pAVAPQjteahRPlDgNLlRLM2ROs_I449NzRBY64aAntaEALw_wcB). You all got access. 
 
 #### Exercises 
-1. If you don't have it yet make sure you install `R`. You can find it [here]( https://cran.r-project.org/bin/windows/base/).
+1. If you don't have it yet make sure you install `R`. You can find it [here](https://cran.r-project.org/bin/windows/base/).
 
-###RStudio
-RStudio is an "integrated development environment" (IDE) for `R`. IDE "is a software application that provides comprehensive facilities to computer programmers for software development. An IDE normally consists of at least a source code editor, build automation tools and a debugger." [(Wikipedia)](https://en.wikipedia.org/wiki/Integrated_development_environment). Most of `R` manuals use RStudio so you can use the same materials to learn the abilities of RStudio. You can find some intro in [here](https://data-flair.training/blogs/rstudio-tutorial/).
+### RStudio
+RStudio is an "integrated development environment" (IDE) for `R`. IDE "is a software application that provides comprehensive facilities to computer programmers for software development. An IDE normally consists of at least a source code editor, build automation tools and a debugger." [(Wikipedia)](https://en.wikipedia.org/wiki/Integrated_development_environment).
+
+Most of `R` practitioners use RStudio so you can use the same materials to learn the abilities of RStudio. You can find some intro in [here](https://data-flair.training/blogs/rstudio-tutorial/).
 
 #### Exercises 
 1. If you don't have it yet make sure you install RStudio. You can find it [here]( https://rstudio.com/products/rstudio/download/#download).
 
-###Tidyverse
+### The "Tidyverse"
 The Tidyverse is a bundle of packages (and if you can't recall what a package is you better go back to the former sections) that makes the use of `R` much more easy practically and conceptually. It contains multiple packages that serve multiple ends:  
 
 + `dplyr` for data manipulation
 + `tidyr` for tidying data
-+ `ggplot2` for visualising data
++ `ggplot2` for visualizing data
 + `readr` for reading different sources of data 
 + `stringr` for dealing with regular expressions
 + `lubridate` for dealing with dates
 
 and much more. Since the `tidyverse` covers a lot of topics we can't cover it here. The main package to focus on is the the `dplyr` package. 
-The `dplyr` package provides a SQL-like toolkit for data manipulation. 
+The `dplyr` package provides a powerful SQL-like toolkit for data manipulation. 
 What are the main functions you should know?
 
 + `filter`: filters the data by row-wise conditions
@@ -68,22 +70,28 @@ What are the main functions you should know?
 + `group_by` perform operation on defined groups
 + `mutate` creates new columns 
 + `summarise` reduces multiple values down to a single summary
-+ ` %>% ` - this is the pipe operator. It plucks the variable before the pipe in the first argument of the following function. 
+
+In addition, you should get familiar with `magrittr`'s (another package from the tidyverse) "pipe" operator ` %>% ` - this operator "plucks" the variable before the pipe in the first argument of the following function. 
 
 If you are not familiar with the tidyverse start to traverse [here](https://r4ds.had.co.nz/transform.html) and [here](https://www.tidyverse.org/packages/).
 
-`The `ggplot2` package allows you to visualise your data in multiple ways. The basic philosophy is layers stacking. You can define almost every element in the way you visualise your data. Check [here](https://ggplot2.tidyverse.org/) and [here](http://r-statistics.co/Complete-Ggplot2-Tutorial-Part1-With-R-Code.html) for some more information. 
+Anothe useful `tidyverse` package is `ggplot2`, THE go-to package to visualize your data in R. The basic philosophy is layers stacking. You can define almost every element in the way you visualize your data. Check [here](https://ggplot2.tidyverse.org/) and [here](http://r-statistics.co/Complete-Ggplot2-Tutorial-Part1-With-R-Code.html) for some more information. 
+
+[Kieran Healy's Data Visualization](https://socviz.co/) e-book is also highly recommended.
 
 #### Exercises
-1. Load the `iris` data by using `data(iris)`. Now do the following set of actions using the `tidyr` vocabulary: select the sepal columns and the species' names. Next, calculate the mean of the sepal length per species. Name the column "Average_Sepal_Length". Make sure you are using the pipe operator throughout. 
+1. Load the `tidyverse` and `kableExtra` packages:
 
 ```{r message=FALSE}
-library(kableExtra)
-library(tidyverse)
+library(tidyverse)  # for wrangling and visualizing data
+library(kableExtra) # for fancy tables
 ```
+
+2. Load the `iris` data by using `data(iris)`. Now do the following set of actions using a `tidy` vocabulary: select the sepal columns and the species' names. Next, calculate the mean of the sepal length per species. Name the column "Average_Sepal_Length". Make sure you are using the pipe operator throughout. 
 
 ```{r}
 data(iris)
+
 iris %>% 
   select(c(starts_with("Sepal"), Species)) %>% 
   group_by(Species) %>% 
@@ -92,36 +100,49 @@ iris %>%
   kable_styling()
 ```
 
-2. Load the `mtcars` data by using `data(mtcars)`. Now create a graph that plots `hp` on the x-axis and `mpg` on the y-axis. Add trend line in lightblue color, and make the color differ by car model (hint: you may want to use `rowname_to_column`)
+3. Load the `mtcars` data by using `data(mtcars)`. Now create a graph that plots `hp` on the x-axis and `mpg` on the y-axis. Add trend line in light-blue color, and make the color differ by `cyl` (the number of cylinders).hint: you may want to first set `cyl` as a factor (i.e., a categorial variable).
 ```{r}
-mtcars %>% rownames_to_column() %>% 
-  ggplot(aes(x = hp, y = mpg, color = rowname)) + geom_point()+ 
-  geom_smooth(method="lm", col="lightblue", size=1)
+data("mtcars")
+
+mtcars %>% 
+  mutate(cyl = as_factor(cyl)) %>% 
+  ggplot(aes(x = hp, y = mpg, color = cyl)) +
+  geom_point()+ 
+  geom_smooth(method="lm", size=1)
 ```
 
 
-###Git & Github
+### Git & GitHub
 
 Git is a tool for version control. It allows documentation and reproducibility of your code. Unfortunately, `R` users do not give enough attention to version control, probably due to the non-production nature of their work.  
-Github is a GUI (Graphical User Interface) for Git. It allows to run all the commands of Git in a graphical way. It also has repositories that help to document and reproduce the work.  We will now go over some steps that will allow us to learn about the uses of Git & Github. 
 
+GitHub is a GUI (Graphical User Interface) for Git. It allows to run all the commands of Git in a graphical way. It also has repositories that help to document and reproduce the work.  We will now go over some steps that will allow us to learn about the uses of Git & GitHub. 
 
-We will now go over several stpes. We will use Git from the command line (in Windows). It is highly reccomended that you will read the following [manual](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control).
+We will now go over several steps. We will use Git from the command line (in Windows). It is highly recommended that you will read the following [manual](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control).
 
 #### Steps 
 1. Install Git: First, follow the instructions [here](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) to install Git. 
-2. Install Github: Install Github from [here](https://github.com/). 
-3. Configure: Define your user name and email by using these lines:  
 
-`$ git config --global user.name "John Doe"`
-`$ git config --global user.email johndoe@example.com`  
+2. Install GitHub: Install GitHub from [here](https://github.com/). 
 
-The `--global` argument define these variable for all your project. Generally, use the `cd` function to find your directory. Go to that directory and see if there is a `.gitconfig` file in there. Git looks for this file for its configuration. You can see an example of a `.gitconfig` file in [here](https://gist.github.com/pksunkara/988716).
+3. Configure: Introduce yourself to git. First, install the package `usethis`. Then, load it and use the `use_git_config` function to introduce yourseld to git:
 
-4. Initialise Repository: You can initialise repository by cloning existing one or by making a directory to a repo. Use the `cd` function to define a directory as a destiny: 
-`cd C:/Users/dorgo/myproject` (adapt it to your path). Then use `git init` to initialise a repo. Afterwards you can `add` files and `commit` (we will go over it).
+```{r git}
+library(usethis)
+
+use_git_config(
+  scope = "global",
+  user.name = "Jane",
+  user.email = "jane@example.org"
+)
+```
+
+The `global` argument define these variable for all your project. Generally, use the `cd` function to find your directory. Go to that directory and see if there is a `.gitconfig` file in there. Git looks for this file for its configuration. You can see an example of a `.gitconfig` file in [here](https://gist.github.com/pksunkara/988716).
+
+4. Initialize Repository: You can initialize repository by cloning existing one or by making a directory to a repo. Use the `cd` function to define a directory as a destiny: 
+`cd C:/Users/dorgo/myproject` (adapt it to your path). Then use `git init` to initialize a repo. Afterwards you can `add` files and `commit` (we will go over it).
 If you want to clone a repo you just need to use the `git clone <url>`. For example, `git clone https://github.com/libgit2/libgit2`.  
-5. Stage: Staging tells Git to track a file, before it commited. After staging the file is waiting to enter the primary version (by `commit`). In order to stage use the `git add` function: `git add awa` (awa is a file in my the git directory). You can check the status of the files by using the `git status` function. Check also the `git diff` function. 
+5. Stage: Staging tells Git to track a file, before it committed. After staging the file is waiting to enter the primary version (by `commit`). In order to stage use the `git add` function: `git add awa` (awa is a file in my the git directory). You can check the status of the files by using the `git status` function. Check also the `git diff` function. 
 6. Commit: Commit insert your version changes into action. Every time you perform a commit, you’re recording a snapshot of your project that you can revert to or compare to later. Use `git commit` to commit all staged changes. Add description for clarity by adding -m: `git commit -m "your note (bug fix 16, for example)". 
 7. Log: The `git log` function shows you the history of your repo. 
 8. Remote: Remotes are distant repos. `git remote` shows you to what repos you are connected. The `git add remote <url>` function creates a remote. `git fetch <remote>` updates your repo with all the changes. 
@@ -130,7 +151,7 @@ If you want to clone a repo you just need to use the `git clone <url>`. For exam
 
 #### Exercises 
 1. There are much more options in Git than was covered here. Make sure to read some more and practice!
-2. As mentioned, `Github` is a GUI for Git. Try to do the same steps that we did here in Github.  
+2. As mentioned, `GitHub` is a GUI for Git. Try to do the same steps that we did here in GitHub.  
 
 
 Good luck!
