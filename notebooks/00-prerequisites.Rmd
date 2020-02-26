@@ -14,7 +14,10 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(eval = TRUE,
+                      echo = TRUE,
+                      warning = FALSE,
+                      message = FALSE)
 ```
 
 Hi everyone and welcome to the ml4econ course (stands for Machine Learning for economists)!  
@@ -80,16 +83,18 @@ Anothe useful `tidyverse` package is `ggplot2`, THE go-to package to visualize y
 [Kieran Healy's Data Visualization](https://socviz.co/) e-book is also highly recommended.
 
 #### Exercises
-1. Load the `tidyverse` and `kableExtra` packages:
+1. Install and load the `tidyverse` and `kableExtra` packages:
 
 ```{r message=FALSE}
+# install.packages(c("tidyverse", "kableExtra"))
+
 library(tidyverse)  # for wrangling and visualizing data
 library(kableExtra) # for fancy tables
 ```
 
 2. Load the `iris` data by using `data(iris)`. Now do the following set of actions using a `tidy` vocabulary: select the sepal columns and the species' names. Next, calculate the mean of the sepal length per species. Name the column "Average_Sepal_Length". Make sure you are using the pipe operator throughout. 
 
-```{r}
+```{r dplyr}
 data(iris)
 
 iris %>% 
@@ -101,7 +106,7 @@ iris %>%
 ```
 
 3. Load the `mtcars` data by using `data(mtcars)`. Now create a graph that plots `hp` on the x-axis and `mpg` on the y-axis. Add trend line in light-blue color, and make the color differ by `cyl` (the number of cylinders).hint: you may want to first set `cyl` as a factor (i.e., a categorial variable).
-```{r}
+```{r ggplot2}
 data("mtcars")
 
 mtcars %>% 
@@ -127,11 +132,13 @@ We will now go over several steps. We will use Git from the command line (in Win
 
 3. Configure: Introduce yourself to git. First, install the package `usethis`. Then, load it and use the `use_git_config` function to introduce yourseld to git:
 
-```{r git}
+```r
+# install.packages("usethis")
+
 library(usethis)
 
 use_git_config(
-  scope = "global",
+  scope = "project",
   user.name = "Jane",
   user.email = "jane@example.org"
 )
