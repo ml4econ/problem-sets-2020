@@ -130,7 +130,7 @@ We will now go over several steps. We will use Git from the command line (in Win
 
 2. Install GitHub: Install GitHub from [here](https://github.com/). 
 
-3. Configure: Introduce yourself to git. First, install the package `usethis`. Then, load it and use the `use_git_config` function to introduce yourseld to git:
+3. Configure: Introduce yourself to git. First, install the package `usethis`. Then, load it and use the `use_git_config` function to introduce yourself to git:
 
 ```r
 # install.packages("usethis")
