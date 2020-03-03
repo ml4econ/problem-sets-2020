@@ -1670,7 +1670,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">ML4econ Prerequisite</h1>
 <h4 class="author">Dor Goldenberg</h4>
-<h4 class="date">26 February, 2020</h4>
+<h4 class="date">03 March, 2020</h4>
 
 </div>
 
@@ -1815,15 +1815,14 @@ virginica
 </div>
 <div id="git-github" class="section level3">
 <h3>Git &amp; GitHub</h3>
-<p>Git is a tool for version control. It allows documentation and reproducibility of your code. Unfortunately, <code>R</code> users do not give enough attention to version control, probably due to the non-production nature of their work.</p>
-<p>GitHub is a GUI (Graphical User Interface) for Git. It allows to run all the commands of Git in a graphical way. It also has repositories that help to document and reproduce the work. We will now go over some steps that will allow us to learn about the uses of Git &amp; GitHub.</p>
-<p>We will now go over several steps. We will use Git from the command line (in Windows). It is highly recommended that you will read the following <a href="https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control">manual</a>.</p>
-<div id="steps" class="section level4">
-<h4>Steps</h4>
+<p>Git is a tool for version control. It allows documentation and reproducibility of your code. Unfortunately, <code>R</code> users do not give enough attention to version control, probably due to the non-production nature of their work. (If you want to learn Git read the following <a href="https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control">manual</a>).</p>
+<p>GitHub is a GUI (Graphical User Interface) for Git. It allows to run all the commands of Git in a graphical way. It also has repositories that help to document and reproduce the work.</p>
+<p>As mentioned, Git is a tool for version control. The basic flow is this: First, as an one time action install Git &amp; Github (<a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">here</a> &amp; <a href="https://github.com/">here</a>). Then set the configurations. When you start a project that you would like to documnent you should initialise a repository in Git - this repository will document the history of your project. How does Git knows what to document? You tell it! Say you did some changes in one of the files (text files, mostly) and you are happy with it. You need to tell Git that you want the file to be a part of the history of your project - you need to <code>stage</code> the file and then <code>commit</code> all the files that have been staged. Now, Git creates a unique identifier of this commit, it knows how your project was looking like when you commited. The commit function opens the door to useful concepts like branching, merging, rebasing etc. but we will not deal with it now.</p>
+<p>Practically, we will use the <code>usethis</code> package for using Git from <code>R</code>.</p>
+<div id="excercises" class="section level4">
+<h4>Excercises</h4>
 <ol style="list-style-type: decimal">
-<li><p>Install Git: First, follow the instructions <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">here</a> to install Git.</p></li>
-<li><p>Install GitHub: Install GitHub from <a href="https://github.com/">here</a>.</p></li>
-<li><p>Configure: Introduce yourself to git. First, install the package <code>usethis</code>. Then, load it and use the <code>use_git_config</code> function to introduce yourseld to git:</p></li>
+<li>Configure: Introduce yourself to git. First, install the package <code>usethis</code>. Then, load it and use the <code>use_git_config</code> function to introduce yourself to git:</li>
 </ol>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="co"># install.packages(&quot;usethis&quot;)</span></a>
 <a class="sourceLine" id="cb4-2" data-line-number="2"></a>
@@ -1834,25 +1833,11 @@ virginica
 <a class="sourceLine" id="cb4-7" data-line-number="7">  <span class="dt">user.name =</span> <span class="st">&quot;Jane&quot;</span>,</a>
 <a class="sourceLine" id="cb4-8" data-line-number="8">  <span class="dt">user.email =</span> <span class="st">&quot;jane@example.org&quot;</span></a>
 <a class="sourceLine" id="cb4-9" data-line-number="9">)</a></code></pre></div>
-<p>The <code>global</code> argument define these variable for all your project. Generally, use the <code>cd</code> function to find your directory. Go to that directory and see if there is a <code>.gitconfig</code> file in there. Git looks for this file for its configuration. You can see an example of a <code>.gitconfig</code> file in <a href="https://gist.github.com/pksunkara/988716">here</a>.</p>
-<ol start="4" style="list-style-type: decimal">
-<li>Initialize Repository: You can initialize repository by cloning existing one or by making a directory to a repo. Use the <code>cd</code> function to define a directory as a destiny: <code>cd C:/Users/dorgo/myproject</code> (adapt it to your path). Then use <code>git init</code> to initialize a repo. Afterwards you can <code>add</code> files and <code>commit</code> (we will go over it). If you want to clone a repo you just need to use the <code>git clone &lt;url&gt;</code>. For example, <code>git clone https://github.com/libgit2/libgit2</code>.<br />
-</li>
-<li>Stage: Staging tells Git to track a file, before it committed. After staging the file is waiting to enter the primary version (by <code>commit</code>). In order to stage use the <code>git add</code> function: <code>git add awa</code> (awa is a file in my the git directory). You can check the status of the files by using the <code>git status</code> function. Check also the <code>git diff</code> function.</li>
-<li>Commit: Commit insert your version changes into action. Every time you perform a commit, you’re recording a snapshot of your project that you can revert to or compare to later. Use <code>git commit</code> to commit all staged changes. Add description for clarity by adding -m: `git commit -m “your note (bug fix 16, for example)”.</li>
-<li>Log: The <code>git log</code> function shows you the history of your repo.</li>
-<li>Remote: Remotes are distant repos. <code>git remote</code> shows you to what repos you are connected. The <code>git add remote &lt;url&gt;</code> function creates a remote. <code>git fetch &lt;remote&gt;</code> updates your repo with all the changes.</li>
-<li>Branch: Branches allows you to deviate from the main route and make changes in your code without it affects other branches. Use the <code>git branch &lt;name&gt;</code> function to create a branch. In order to switch between branches use <code>git checkout &lt;branch&gt;</code>.</li>
-<li>Merge: When you are satisfied with your branch you can merge it with other branches. Use the <code>git merge &lt;branch&gt;</code> function to merge. Sometimes you will have a conflict - a changes that were done to the same code in different branches. Git will tell you that you have a conflict. You will have to fix your conflicts before merging.</li>
+<ol start="2" style="list-style-type: decimal">
+<li><p>Open a new script, do some changes and save. Now, try to stage and commit.</p></li>
+<li><p>Try to see what changes were made until the lst commit.</p></li>
 </ol>
-</div>
-<div id="exercises-4" class="section level4">
-<h4>Exercises</h4>
-<ol style="list-style-type: decimal">
-<li>There are much more options in Git than was covered here. Make sure to read some more and practice!</li>
-<li>As mentioned, <code>GitHub</code> is a GUI for Git. Try to do the same steps that we did here in GitHub.</li>
-</ol>
-<p>Good luck!</p>
+<p>Good luck!!</p>
 </div>
 </div>
 

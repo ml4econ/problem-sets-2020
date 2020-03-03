@@ -119,18 +119,18 @@ mtcars %>%
 
 ### Git & GitHub
 
-Git is a tool for version control. It allows documentation and reproducibility of your code. Unfortunately, `R` users do not give enough attention to version control, probably due to the non-production nature of their work.  
+Git is a tool for version control. It allows documentation and reproducibility of your code. Unfortunately, `R` users do not give enough attention to version control, probably due to the non-production nature of their work. (If you want to learn Git read the following [manual](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control)).  
 
-GitHub is a GUI (Graphical User Interface) for Git. It allows to run all the commands of Git in a graphical way. It also has repositories that help to document and reproduce the work.  We will now go over some steps that will allow us to learn about the uses of Git & GitHub. 
+GitHub is a GUI (Graphical User Interface) for Git. It allows to run all the commands of Git in a graphical way. It also has repositories that help to document and reproduce the work.   
 
-We will now go over several steps. We will use Git from the command line (in Windows). It is highly recommended that you will read the following [manual](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control).
+As mentioned, Git is a tool for version control. The basic flow is this: First, as an one time action install Git & Github ([here](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) & [here](https://github.com/)). Then set the configurations. 
+When you start a project that you would like to documnent you should initialise a repository in Git - this repository will document the history of your project. How does Git knows what to document? You tell it! Say you did some changes in one of the files (text files, mostly) and you are happy with it. You need to tell Git that you want the file to be a part of the history of your project - you need to `stage` the file and then `commit` all the files that have been staged. Now, Git creates a unique identifier of this commit, it knows how your project was looking like when you commited. 
+The commit function opens the door to useful concepts like branching, merging, rebasing etc. but we will not deal with it now. 
 
-#### Steps 
-1. Install Git: First, follow the instructions [here](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) to install Git. 
+Practically, we will use the `usethis` package for using Git from `R`. 
 
-2. Install GitHub: Install GitHub from [here](https://github.com/). 
-
-3. Configure: Introduce yourself to git. First, install the package `usethis`. Then, load it and use the `use_git_config` function to introduce yourself to git:
+#### Excercises 
+1. Configure: Introduce yourself to git. First, install the package `usethis`. Then, load it and use the `use_git_config` function to introduce yourself to git:
 
 ```r
 # install.packages("usethis")
@@ -143,23 +143,9 @@ use_git_config(
   user.email = "jane@example.org"
 )
 ```
+2. Open a new script, do some changes and save. Now, try to stage and commit.
 
-The `global` argument define these variable for all your project. Generally, use the `cd` function to find your directory. Go to that directory and see if there is a `.gitconfig` file in there. Git looks for this file for its configuration. You can see an example of a `.gitconfig` file in [here](https://gist.github.com/pksunkara/988716).
-
-4. Initialize Repository: You can initialize repository by cloning existing one or by making a directory to a repo. Use the `cd` function to define a directory as a destiny: 
-`cd C:/Users/dorgo/myproject` (adapt it to your path). Then use `git init` to initialize a repo. Afterwards you can `add` files and `commit` (we will go over it).
-If you want to clone a repo you just need to use the `git clone <url>`. For example, `git clone https://github.com/libgit2/libgit2`.  
-5. Stage: Staging tells Git to track a file, before it committed. After staging the file is waiting to enter the primary version (by `commit`). In order to stage use the `git add` function: `git add awa` (awa is a file in my the git directory). You can check the status of the files by using the `git status` function. Check also the `git diff` function. 
-6. Commit: Commit insert your version changes into action. Every time you perform a commit, you’re recording a snapshot of your project that you can revert to or compare to later. Use `git commit` to commit all staged changes. Add description for clarity by adding -m: `git commit -m "your note (bug fix 16, for example)". 
-7. Log: The `git log` function shows you the history of your repo. 
-8. Remote: Remotes are distant repos. `git remote` shows you to what repos you are connected. The `git add remote <url>` function creates a remote. `git fetch <remote>` updates your repo with all the changes. 
-9. Branch: Branches allows you to deviate from the main route and make changes in your code without it affects other branches. Use the `git branch <name>` function to create a branch. In order to switch between branches use `git checkout <branch>`. 
-11. Merge: When you are satisfied with your branch you can merge it with other branches. Use the `git merge <branch>` function to merge. Sometimes you will have a conflict - a changes that were done to the same code in different branches. Git will tell you that you have a conflict. You will have to fix your conflicts before merging.  
-
-#### Exercises 
-1. There are much more options in Git than was covered here. Make sure to read some more and practice!
-2. As mentioned, `GitHub` is a GUI for Git. Try to do the same steps that we did here in GitHub.  
-
+3. Try to see what changes were made until the lst commit.
 
 Good luck!!
 
